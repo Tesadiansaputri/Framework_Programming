@@ -1,0 +1,17 @@
+
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: harkat_postgre
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rahasia
+      POSTGRES_DB: database_name
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgre_data_volume:/var/lib/postgresql/data
+
+volumes:
+  postgre_data_volume: {}
