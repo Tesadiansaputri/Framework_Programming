@@ -21,18 +21,18 @@ export class BooksController {
     //menampilkan data buku berdasarkan ID
     @Get(':id')
     getBookById(@Param('id') id: string) {
-        return `Specific book details for ID: ${id}`;
+        return this.booksService.findById(id);
     }
 
     //memperbarui buku berdasarkan ID
     @Put(':id')
-    updateBook(@Param('id') id: string) {
-        return `Book with ID: ${id} has been updated`;
+    updateBook(@Param('id') id: string, @Body() updateBookDto: CreateBookDto) {
+        return this.booksService.update(id, updateBookDto);
     }
 
     //menghapus buku berdasarkan ID
     @Delete(':id')
     deleteBook(@Param('id') id: string) {
-        return `Book with ID: ${id} has been deleted`;
+        return this.booksService.remove(id);
     }
 }
